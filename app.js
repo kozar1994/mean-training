@@ -25,14 +25,17 @@ mangoos
 
 const app = express();
 
+// підключення паспорту провірка входу і достопу
 app.use(passport.initialize());
 require("./middleware/passport")(passport);
 
 app.use(morgan("dev"));
+app.use('/uploads', express.static('uploads')) // робимо папку статичною щоб мати доступ до картинок
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+// наші url RestApi перше Routers - де ми все збираємо в купку, controler - описує методи
 app.use("/api/auth", auhtRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/category", categoryRoutes);

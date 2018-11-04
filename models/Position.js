@@ -2,7 +2,7 @@ const mongoos = require("mongoose");
 const Schema = mongoos.Schema;
 
 const positionSchema = new Schema({
-  name = {
+  name: {
     type: String,
     required: true
   },
